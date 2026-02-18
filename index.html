@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome To The Bunker</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header / Nav -->
+  <header class="site_header">
+    <nav class="nav" aria-label="Site navigation">
+      <ul id="menu" class="nav_menu">
+  <li><a href="#about">About</a></li>
+  <li><a href="#archive">The Archive</a></li>
+  <li><a href="#coming-soon">Coming Soon</a></li>
+</ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-label="Landing hero">
+      <!-- Background Video -->
+      <div class="hero_video_wrapper" aria-hidden="true">
+        <video
+          class="hero_bg_video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+        >
+          <!-- keep bunker1.mp4 in the same folder as index.html -->
+          <source src="bunker1.mp4" type="video/mp4" />
+        </video>
+
+        <!-- Dark overlay for readability -->
+        <div class="video_overlay"></div>
+      </div>
+
+      <!-- Hero Text -->
+      <div class="hero_text_container">
+        <ul class="hero_text_title" aria-label="Welcome To The Bunker">
+          <li><span>Welcome</span></li>
+          <li><span>&nbsp;</span></li>
+          <li><span>To</span></li>
+          <li><span>&nbsp;</span></li>
+          <li><span>The</span></li>
+          <li><span>&nbsp;</span></li>
+          <li><span>Bunker</span></li>
+        </ul>
+
+        <h3 class="hero_text_tagline">
+          <span>A SPN Fanfiction Archive</span>
+          <button class="Enter" type="button">Enter</button>
+        </h3>
+      </div>
+    </section>
+
+    <!-- Content sections -->
+    <section id="archive" class="section_block">
+      <h2>Archive</h2>
+      <p>Put your archive layout here.</p>
+    </section>
+
+    <section id="about" class="section_block">
+      <h2>About</h2>
+      <p>Put your about text here.</p>
+    </section>
+
+    <section id="coming-soon" class="section_block">
+  <h2>Coming Soon</h2>
+  <p>Teasers, updates, and new drops will live here.</p>
+</section>
+
+  </main>
+
+  <!-- Enter fade transition -->
+<div class="enter_transition"></div>
+
+<!-- Cinematic overlays -->
+<div class="enter_transition" aria-hidden="true"></div>
+<div class="enter_title_card" aria-hidden="true">
+  <div class="enter_title_text">Entering the Bunker…</div>
+</div>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+
+

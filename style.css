@@ -1,0 +1,292 @@
+/* ===== Supernatural Font ===== */
+@font-face {
+  font-family: "Supernatural";
+  src: url("./fonts/supernatural_knight.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ====== base reset ====== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* Prevent extra height from default element margins */
+ul, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;       /* ✅ lock scrolling on landing */
+  background: #000;       /* ✅ prevents white showing anywhere */
+}
+
+body {
+  margin: 0;
+  background: #000;       /* keep solid black behind video */
+  color: #fff;
+}
+
+/* ====== header/nav ====== */
+.site_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  background: transparent;   /* remove dark bar */
+  border-bottom: none;
+  backdrop-filter: none;
+}
+
+.nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 16px;
+}
+
+.nav_menu {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+#menu li a {
+  display: block;
+  padding: 10px 14px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.25s ease;
+}
+
+#menu li a:hover,
+#menu li a:focus-visible,
+#menu li a.active {
+  color: #00f5a4;
+  outline: none;
+}
+
+/* ====== hero ====== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding-top: 0; /* space for fixed header */
+}
+
+/* ===== VIDEO BACKGROUND ===== */
+.hero_video_wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero_bg_video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  min-width: 100%;
+  min-height: 100%;
+
+  width: auto;
+  height: auto;
+
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none;
+
+  /* remove dimming */
+  filter: none;
+}
+
+.video_overlay {
+  display: none;
+}
+
+/* ===== hero text ===== */
+.hero_text_container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 30px 16px;
+}
+
+/* TITLE */
+.hero_text_title {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+
+  font-family: "Supernatural", serif;
+  letter-spacing: 8px;
+  font-size: clamp(3rem, 7vw, 5rem);
+}
+
+.hero_text_title li {
+  overflow: hidden; /* masks the upward animation */
+}
+
+.hero_text_title span {
+  display: inline-block; /* required for yPercent transforms */
+  will-change: transform, opacity;
+  color: #e8e0c9;
+  text-shadow:  0 0 6px rgba(255,240,200,.45),
+    0 0 14px rgba(255,240,200,.35),
+    0 0 40px rgba(255,240,200,.2);
+}
+
+/* TAGLINE */
+.hero_text_tagline {
+  margin: 26px 0 0;
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: #cfcfcf;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* BUTTON */
+.Enter {
+  border: 1px solid #d4c8a3;
+  background: transparent;
+  color: #d4c8a3;
+  padding: 10px 22px;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  border-radius: 3px;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.Enter:hover {
+  background: #d4c8a3;
+  color: #0b0d10;
+  transform: translateY(-1px);
+}
+
+.Enter:focus-visible {
+  outline: 2px solid #00f5a4;
+  outline-offset: 3px;
+}
+
+/* ====== sections ====== */
+.section_block {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 90px 16px;
+  font-family: "Roboto", sans-serif;
+}
+
+.section_block h2 {
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hero_bg_video {
+    display: none;
+  }
+
+  .video_overlay {
+    background: #0b0d10;
+  }
+
+  .Enter,
+  #menu li a {
+    transition: none;
+  }
+}
+/* ================= ENTER SITE TRANSITION ================= */
+
+/* ================= CINEMATIC ENTER TRANSITION ================= */
+
+/* Nav hidden on landing, fades in after enter */
+.site_header{
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+.site_header.active{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hide site content until Enter */
+main .section_block { display: none; }
+main.entered .section_block { display: block; }
+
+/* Full-screen black fade */
+.enter_transition{
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transition: opacity 1.2s ease;
+}
+
+.enter_transition.active{
+  opacity: 1;
+}
+
+/* Title card that appears during transition */
+.enter_title_card{
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.7s ease;
+}
+
+.enter_title_card.active{
+  opacity: 1;
+}
+
+.enter_title_text{
+  font-family: "Supernatural", sans-serif;
+  letter-spacing: 6px;
+  font-weight: normal;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  color: rgba(255,255,255,0.92);
+  text-transform: uppercase;
+}
+
+/* Optional: keep hero from being clickable after entering */
+.hero.entered{
+  pointer-events: none;
+}
+/* After entering: permanently remove the video to save CPU */
+.hero.video-off .hero_video_wrapper{
+  display: none;
+}
+
+/* Ensure hero area is solid black once video is removed */
+.hero.video-off{
+  background: #000;
+}
