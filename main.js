@@ -120,11 +120,11 @@ enterBtn.addEventListener("click", () => {
     if (header) header.classList.add("active");
 
     // ✅ force-scroll to archive in a way that doesn't depend on scrollIntoView
-    const t = document.querySelector("#archive");
+    const t = document.querySelector("#home");
     if (t) {
       const y = t.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({ top: y, left: 0, behavior: "auto" });
-      window.location.hash = "archive";
+      window.location.hash = "home";
     }
 
   }, 1100);
