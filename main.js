@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const enterBtn = document.querySelector(".Enter");
   const transition = document.querySelector(".enter_transition");
   const titleCard = document.querySelector(".enter_title_card");
+  const enterSound = document.querySelector("#enterSound");
   const header = document.querySelector(".site_header");
   const hero = document.querySelector(".hero");
   const mainEl = document.querySelector("main");
@@ -86,7 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
 }
     setTimeout(() => {
       if (titleCard) titleCard.classList.add("active");
-    }, 600);
+
+  // play sound right when the text appears
+  if (enterSound) {
+    enterSound.currentTime = 0;
+    enterSound.play().catch(() => {});
+  }
+}, 600);
+
 
     setTimeout(() => {
       if (mainEl) mainEl.classList.add("entered");
