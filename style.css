@@ -290,3 +290,7 @@ main.entered .section_block { display: block; }
 .hero.video-off{
   background: #000;
 }
+/* After entering: remove the intro hero so you can't scroll back to it */
+body.entered .hero{
+  display: none;
+}
