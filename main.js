@@ -1,6 +1,8 @@
-// Lock landing page scroll until Enter
-document.documentElement.style.overflow = "hidden";
-document.body.style.overflow = "hidden";
+// Lock landing page scroll until Enter (ONLY if the hero exists)
+if (document.querySelector(".hero")) {
+  document.documentElement.style.overflow = "hidden";
+  document.body.style.overflow = "hidden";
+}
 // Select elements
 const heroTextTitle = document.querySelectorAll(".hero_text_title span");
 const tagline = document.querySelector(".hero_text_tagline");
