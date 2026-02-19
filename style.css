@@ -70,7 +70,7 @@ body {
 #menu li a:hover,
 #menu li a:focus-visible,
 #menu li a.active {
-  color: #00f5a4;
+  color: #f50000;
   outline: none;
 }
 
