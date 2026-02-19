@@ -76,21 +76,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!enterBtn) return;
 
-  enterBtn.addEventListener("click", () => {
+enterBtn.addEventListener("click", () => {
 
-    // mark entered immediately
-    document.body.classList.add("entered");
+  //  mark entered immediately
+  document.body.classList.add("entered");
 
-    // play sound immediately (gesture-safe)
-    if (enterSound) {
-      enterSound.currentTime = 0;
-      enterSound.play().catch(() => {});
-    }
+  //  play audio immediately (gesture-safe)
+  if (enterSound) {
+    enterSound.currentTime = 0;
+    enterSound.play().catch(() => {});
+  }
 
-    // fade to black
-    if (transition) transition.classList.add("active");
+  //  fade to black
+  if (transition) transition.classList.add("active");
 
-    // stop and unload video
+  //  show title card
+  setTimeout(() => {
+    if (titleCard) titleCard.classList.add("active");
+  }, 600);
+
+  //  after fade: remove hero + stop video + jump to archive + show nav
+  setTimeout(() => {
+
+    // stop + unload video (CPU saver)
     if (video) {
       video.pause();
       video.removeAttribute("src");
@@ -98,34 +106,35 @@ document.addEventListener("DOMContentLoaded", () => {
       video.load();
     }
 
-    // show entering text
-    setTimeout(() => {
-      if (titleCard) titleCard.classList.add("active");
-    }, 600);
+    //  REMOVE hero from the DOM so you can never scroll back to it
+    if (hero) hero.remove();
 
-    // reveal site
-    setTimeout(() => {
+    // reveal site sections
+    if (mainEl) mainEl.classList.add("entered");
 
-      if (mainEl) mainEl.classList.add("entered");
+    // enable scrolling in the site
+    document.documentElement.style.overflow = "auto";
+    document.body.style.overflow = "auto";
 
-      document.documentElement.style.overflow = "auto";
-      document.body.style.overflow = "auto";
+    // show navigation
+    if (header) header.classList.add("active");
 
-      if (header) header.classList.add("active");
+    // ✅ force-scroll to archive in a way that doesn't depend on scrollIntoView
+    const t = document.querySelector("#archive");
+    if (t) {
+      const y = t.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: y, left: 0, behavior: "auto" });
+      window.location.hash = "archive";
+    }
 
-      // permanently remove hero so you can't scroll back
-      if (hero) hero.style.display = "none";
+  }, 1100);
 
-      if (target) target.scrollIntoView({ behavior: "auto", block: "start" });
+  // fade back in
+  setTimeout(() => {
+    if (titleCard) titleCard.classList.remove("active");
+    if (transition) transition.classList.remove("active");
+  }, 1900);
 
-    }, 1100);
-
-    // fade back in
-    setTimeout(() => {
-      if (titleCard) titleCard.classList.remove("active");
-      if (transition) transition.classList.remove("active");
-    }, 1900);
-
-  });
+});
 
 });
