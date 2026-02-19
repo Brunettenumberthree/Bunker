@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".site_header");
   const hero = document.querySelector(".hero");
   const mainEl = document.querySelector("main");
-  const target = document.querySelector("#archive");
+  const target = document.querySelector("#home");
   const video = document.querySelector(".hero_bg_video");
   const enterSound = document.querySelector("#enterSound");
 
