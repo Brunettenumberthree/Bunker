@@ -63,56 +63,69 @@ if (typeof gsap !== "undefined") {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
   const enterBtn = document.querySelector(".Enter");
   const transition = document.querySelector(".enter_transition");
   const titleCard = document.querySelector(".enter_title_card");
-  const enterSound = document.querySelector("#enterSound");
   const header = document.querySelector(".site_header");
   const hero = document.querySelector(".hero");
   const mainEl = document.querySelector("main");
   const target = document.querySelector("#archive");
   const video = document.querySelector(".hero_bg_video");
+  const enterSound = document.querySelector("#enterSound");
 
   if (!enterBtn) return;
 
   enterBtn.addEventListener("click", () => {
-    if (transition) transition.classList.add("active");
-    if (video) {
-  video.pause();
 
-  // Unload video source to stop decoding (big CPU saver)
-  video.removeAttribute("src");
-  while (video.firstChild) video.removeChild(video.firstChild);
-  video.load();
-}
+    // mark entered immediately
+    document.body.classList.add("entered");
+
+    // play sound immediately (gesture-safe)
+    if (enterSound) {
+      enterSound.currentTime = 0;
+      enterSound.play().catch(() => {});
+    }
+
+    // fade to black
+    if (transition) transition.classList.add("active");
+
+    // stop and unload video
+    if (video) {
+      video.pause();
+      video.removeAttribute("src");
+      while (video.firstChild) video.removeChild(video.firstChild);
+      video.load();
+    }
+
+    // show entering text
     setTimeout(() => {
       if (titleCard) titleCard.classList.add("active");
+    }, 600);
 
-  // play sound right when the text appears
-  if (enterSound) {
-    enterSound.currentTime = 0;
-    enterSound.play().catch(() => {});
-  }
-}, 600);
-
+    // reveal site
     setTimeout(() => {
+
       if (mainEl) mainEl.classList.add("entered");
 
       document.documentElement.style.overflow = "auto";
       document.body.style.overflow = "auto";
 
       if (header) header.classList.add("active");
-      if (hero) {
-  hero.classList.add("entered");
-  hero.classList.add("video-off"); // ✅ hides video + forces black bg
-}
+
+      // permanently remove hero so you can't scroll back
+      if (hero) hero.style.display = "none";
+
       if (target) target.scrollIntoView({ behavior: "auto", block: "start" });
+
     }, 1100);
 
+    // fade back in
     setTimeout(() => {
       if (titleCard) titleCard.classList.remove("active");
       if (transition) transition.classList.remove("active");
     }, 1900);
-  });
-});
 
+  });
+
+});

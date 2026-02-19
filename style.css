@@ -290,10 +290,12 @@ main.entered .section_block { display: block; }
 .hero.video-off{
   background: #000;
 }
-
+  
 /* After entering: ensure the page doesn't reserve space where the hero used to be */
 body.entered main {
   margin-top: 0 !important;
 }
-body.entered .hero { display: none !important; }
 
+body.entered .hero { 
+  display: none !important; 
+}
