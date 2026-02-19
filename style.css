@@ -281,6 +281,105 @@ body {
     transition: none;
   }
 }
+/* ================= Internal pages ================= */
+body.internal-page {
+  overflow: auto;             /* internal pages should scroll normally */
+  background: #000;
+}
+
+/* Make header visible on internal pages even if .active is not present */
+body.internal-page .site_header{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Add spacing so content doesn't sit under fixed header */
+.internal_main{
+  padding-top: 64px;
+}
+
+/* ================= Library page background ================= */
+.library_section{
+  position: relative;
+  max-width: none;
+  margin: 0;
+  padding: 110px 16px;
+  min-height: calc(100vh - 64px);
+
+  display: grid;
+  place-items: center;
+
+  background-image: url("thelibrary.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.library_section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.60);
+}
+
+.library_overlay_content{
+  position: relative;
+  z-index: 1;
+  width: min(980px, 100%);
+  text-align: left;
+
+  padding: 28px 22px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(4px);
+  border-radius: 6px;
+}
+
+.library_overlay_content h2{
+  font-family: "Supernatural", serif;
+  letter-spacing: 6px;
+  font-weight: normal;
+  margin: 0 0 12px;
+}
+
+.library_overlay_content p{
+  font-family: "Roboto", sans-serif;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.library_grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.library_card{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.35);
+  padding: 14px 14px;
+  border-radius: 6px;
+  font-family: "Roboto", sans-serif;
+}
+
+.library_card h3{
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+
+.library_card ul{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .library_grid{
+    grid-template-columns: 1fr;
+  }
+}
 /* ================= ENTER SITE TRANSITION ================= */
 
 /* ================= CINEMATIC ENTER TRANSITION ================= */
