@@ -95,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }, 600);
 
-
     setTimeout(() => {
       if (mainEl) mainEl.classList.add("entered");
 
