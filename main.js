@@ -62,79 +62,69 @@ if (typeof gsap !== "undefined") {
   if (enterBtn) enterBtn.style.opacity = "1";
 }
 
+// ===== Enter transition (single, clean handler) =====
 document.addEventListener("DOMContentLoaded", () => {
-
-  const enterBtn = document.querySelector(".Enter");
   const transition = document.querySelector(".enter_transition");
   const titleCard = document.querySelector(".enter_title_card");
   const header = document.querySelector(".site_header");
   const hero = document.querySelector(".hero");
   const mainEl = document.querySelector("main");
-  const target = document.querySelector("#home");
   const video = document.querySelector(".hero_bg_video");
   const enterSound = document.querySelector("#enterSound");
 
-  if (!enterBtn) return;
+  const enterBtnEl = document.querySelector(".Enter");
+  if (!enterBtnEl) return;
 
-enterBtn.addEventListener("click", () => {
+  enterBtnEl.addEventListener("click", () => {
+    // mark entered immediately (CSS hooks)
+    document.body.classList.add("entered");
 
-  //  mark entered immediately
-  document.body.classList.add("entered");
-
-  //  play audio immediately (gesture-safe)
-  if (enterSound) {
-    enterSound.currentTime = 0;
-    enterSound.play().catch(() => {});
-  }
-
-  //  fade to black
-  if (transition) transition.classList.add("active");
-
-  //  show title card
-  setTimeout(() => {
-    if (titleCard) titleCard.classList.add("active");
-  }, 600);
-
-  //  after fade: remove hero + stop video + jump to archive + show nav
-  setTimeout(() => {
-
-    // stop + unload video (CPU saver)
-    if (video) {
-      video.pause();
-      video.removeAttribute("src");
-      while (video.firstChild) video.removeChild(video.firstChild);
-      video.load();
+    // play sound immediately (gesture-safe)
+    if (enterSound) {
+      enterSound.currentTime = 0;
+      enterSound.play().catch(() => {});
     }
 
-    //  REMOVE hero from the DOM so you can never scroll back to it
-    if (hero) hero.remove();
+    // fade to black
+    if (transition) transition.classList.add("active");
 
-    // reveal site sections
-    if (mainEl) mainEl.classList.add("entered");
+    // show "Entering…" text
+    setTimeout(() => {
+      if (titleCard) titleCard.classList.add("active");
+    }, 600);
 
-    // enable scrolling in the site
-    document.documentElement.style.overflow = "auto";
-    document.body.style.overflow = "auto";
+    // after fade: stop video, remove hero, reveal site, show nav, go to home
+    setTimeout(() => {
+      // stop + unload video (CPU saver)
+      if (video) {
+        video.pause();
+        video.removeAttribute("src");
+        while (video.firstChild) video.removeChild(video.firstChild);
+        video.load();
+      }
 
-    // show navigation
-    if (header) header.classList.add("active");
+      // remove hero so you can't scroll back
+      if (hero) hero.remove();
 
-    // ✅ force-scroll to archive in a way that doesn't depend on scrollIntoView
-    const t = document.querySelector("#home");
-    if (t) {
-      const y = t.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({ top: y, left: 0, behavior: "auto" });
-      window.location.hash = "home";
-    }
+      // reveal site sections
+      if (mainEl) mainEl.classList.add("entered");
 
-  }, 1100);
+      // enable scrolling for the site
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
 
-  // fade back in
-  setTimeout(() => {
-    if (titleCard) titleCard.classList.remove("active");
-    if (transition) transition.classList.remove("active");
-  }, 1900);
+      // show nav
+      if (header) header.classList.add("active");
 
-});
+      // home is now top (hero removed)
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      history.replaceState(null, "", "#home");
+    }, 1100);
 
+    // fade back in
+    setTimeout(() => {
+      if (titleCard) titleCard.classList.remove("active");
+      if (transition) transition.classList.remove("active");
+    }, 1900);
+  });
 });

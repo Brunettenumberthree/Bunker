@@ -207,7 +207,7 @@ body {
   max-width: none;          /* allow full-width background */
   margin: 0;
   padding: 120px 16px;      /* roomy for headline */
-  min-height: 85vh;
+  min-height: 100vh;
 
   display: grid;
   place-items: center;
