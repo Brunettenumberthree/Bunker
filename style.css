@@ -20,8 +20,8 @@ ul, h1, h2, h3, p {
 
 html, body {
   height: 100%;
-  overflow: hidden;       /* ✅ lock scrolling on landing */
-  background: #000;       /* ✅ prevents white showing anywhere */
+  overflow: hidden;       /*  lock scrolling on landing */
+  background: #000;       /*  prevents white showing anywhere */
 }
 
 body {
@@ -37,7 +37,7 @@ body {
   left: 0;
   width: 100%;
   z-index: 20;
-  background: transparent;   /* remove dark bar */
+  background: transparent;
   border-bottom: none;
   backdrop-filter: none;
 }
@@ -73,7 +73,10 @@ body {
   color: #00f5a4;
   outline: none;
 }
-
+/* Make nav readable over background images */
+.site_header .nav_menu a{
+  text-shadow: 0 2px 8px rgba(0,0,0,.85);
+}
 /* ====== hero ====== */
 .hero {
   position: relative;
@@ -295,7 +298,7 @@ body.internal-page .site_header{
 
 /* Add spacing so content doesn't sit under fixed header */
 .internal_main{
-  padding-top: 64px;
+  padding-top: 0;
 }
 
 /* ================= Library page background ================= */
