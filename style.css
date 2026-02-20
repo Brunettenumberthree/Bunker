@@ -569,3 +569,51 @@ body.entered main {
 body.entered .hero { 
   display: none !important; 
 }
+/* ===== FORCE: Dean + Sam room backgrounds ===== */
+.deans_room_section{
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 110px 16px;
+  min-height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  background: url("deansroom.jpg") center / cover no-repeat;
+}
+
+.deans_room_section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.60);
+}
+
+.sams_room_section{
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 110px 16px;
+  min-height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  background: url("samsroom.jpg") center / cover no-repeat;
+}
+
+.sams_room_section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.60);
+}
+
+/* Make sure overlay content stays on top of the ::before overlay */
+.room_overlay_content{
+  position: relative;
+  z-index: 1;
+}
