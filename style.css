@@ -70,7 +70,7 @@ body {
 #menu li a:hover,
 #menu li a:focus-visible,
 #menu li a.active {
-  color: #00f5a4;
+  color: #de1616;
   outline: none;
 }
 /* Make nav readable over background images */
@@ -382,6 +382,111 @@ body.internal-page .site_header{
   .library_grid{
     grid-template-columns: 1fr;
   }
+}
+
+/* ================= Shared room layout ================= */
+.room_overlay_content{
+  position: relative;
+  z-index: 1;
+  width: min(980px, 100%);
+  text-align: left;
+
+  padding: 28px 22px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(4px);
+  border-radius: 6px;
+}
+
+.room_overlay_content h2{
+  font-family: "Supernatural", serif;
+  letter-spacing: 6px;
+  font-weight: normal;
+  margin: 0 0 12px;
+}
+
+.room_overlay_content p{
+  font-family: "Roboto", sans-serif;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.room_grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.room_card{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.35);
+  padding: 14px 14px;
+  border-radius: 6px;
+  font-family: "Roboto", sans-serif;
+}
+
+.room_card h3{
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+
+.room_card ul{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,0.9);
+}
+
+@media (max-width: 900px){
+  .room_grid{ grid-template-columns: 1fr; }
+}
+
+/* ================= Dean's Room background ================= */
+.deans_room_section{
+  position: relative;
+  max-width: none;
+  margin: 0;
+  padding: 110px 16px;
+  min-height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  background-image: url("deansroom.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.deans_room_section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.60);
+}
+
+/* ================= Sam's Room background ================= */
+.sams_room_section{
+  position: relative;
+  max-width: none;
+  margin: 0;
+  padding: 110px 16px;
+  min-height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  background-image: url("samsroom.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sams_room_section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.60);
 }
 /* ================= ENTER SITE TRANSITION ================= */
 
