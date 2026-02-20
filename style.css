@@ -393,7 +393,7 @@ body.internal-page .site_header{
 
   padding: 28px 22px;
   border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.35);
+  background: rgb(255, 255, 255);
   backdrop-filter: blur(4px);
   border-radius: 6px;
 }
@@ -407,7 +407,7 @@ body.internal-page .site_header{
 
 .room_overlay_content p{
   font-family: "Roboto", sans-serif;
-  color: rgba(255,255,255,0.92);
+  color: rgba(0, 0, 0, 0.92);
   line-height: 1.6;
   margin: 0 0 18px;
 }
@@ -420,7 +420,7 @@ body.internal-page .site_header{
 
 .room_card{
   border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.35);
+  background: rgb(255, 255, 255);
   padding: 14px 14px;
   border-radius: 6px;
   font-family: "Roboto", sans-serif;
