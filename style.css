@@ -287,7 +287,7 @@ body {
 /* ================= Internal pages ================= */
 body.internal-page {
   overflow: auto;             /* internal pages should scroll normally */
-  background: #000;
+  background: transparent;
 }
 
 /* Make header visible on internal pages even if .active is not present */
