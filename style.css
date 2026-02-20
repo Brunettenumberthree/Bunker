@@ -684,6 +684,88 @@ body.internal-page .site_header{
   }
 }
 
+.hunters_section{
+  position: relative;
+  max-width: none;
+  margin: 0;
+  padding: 110px 16px;
+  min-height: 100dvh;
+
+  display: grid;
+  place-items: center;
+
+  background-image: url("samdean.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hunters_section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.60);
+}
+
+.hunters_overlay_content{
+  position: relative;
+  z-index: 1;
+  width: min(980px, 100%);
+  text-align: left;
+
+  padding: 28px 22px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(4px);
+  border-radius: 6px;
+}
+
+.hunters_overlay_content h2{
+  font-family: "Supernatural", serif;
+  letter-spacing: 6px;
+  font-weight: normal;
+  margin: 0 0 12px;
+}
+
+.hunters_overlay_content p{
+  font-family: "Roboto", sans-serif;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.hunters_grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.hunters_card{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.35);
+  padding: 14px 14px;
+  border-radius: 6px;
+  font-family: "Roboto", sans-serif;
+}
+
+.hunters_card h3{
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+
+.hunters_card ul{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .hunters_grid{
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* ================= ENTER SITE TRANSITION ================= */
 
