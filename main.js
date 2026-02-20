@@ -8,6 +8,50 @@ const heroTextTitle = document.querySelectorAll(".hero_text_title span");
 const tagline = document.querySelector(".hero_text_tagline");
 const enterBtn = document.querySelector(".Enter");
 const bgVideo = document.querySelector(".hero_bg_video");
+// ===== Skip intro when returning to Home (#home) or if already entered once =====
+(function skipIntroIfNeeded(){
+  const isLanding = document.body.classList.contains("landing-page");
+  if (!isLanding) return;
+
+  const wantsHome = window.location.hash === "#home";
+  const alreadyEntered = sessionStorage.getItem("enteredSite") === "1";
+
+  if (!wantsHome && !alreadyEntered) return;
+
+  const header = document.querySelector(".site_header");
+  const hero = document.querySelector(".hero");
+  const mainEl = document.querySelector("main");
+  const video = document.querySelector(".hero_bg_video");
+  const transition = document.querySelector(".enter_transition");
+  const titleCard = document.querySelector(".enter_title_card");
+
+  // stop/unload video
+  if (video) {
+    video.pause();
+    video.removeAttribute("src");
+    while (video.firstChild) video.removeChild(video.firstChild);
+    video.load();
+  }
+
+  // remove intro section completely
+  if (hero) hero.remove();
+
+  // show content + nav
+  document.body.classList.add("entered");
+  if (mainEl) mainEl.classList.add("entered");
+  if (header) header.classList.add("active");
+
+  // ensure overlays are not visible
+  if (transition) transition.classList.remove("active");
+  if (titleCard) titleCard.classList.remove("active");
+
+  // allow scrolling
+  document.documentElement.style.overflow = "auto";
+  document.body.style.overflow = "auto";
+
+  // land at top of Home
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+})();
 
 // Mobile/iOS autoplay kickstart (autoplay requires muted + playsinline)
 document.addEventListener("DOMContentLoaded", () => {
@@ -78,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!enterBtnEl) return;
 
   enterBtnEl.addEventListener("click", () => {
+    sessionStorage.setItem("enteredSite", "1");
     // mark entered immediately (CSS hooks)
     document.body.classList.add("entered");
 

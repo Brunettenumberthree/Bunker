@@ -395,10 +395,9 @@ body.internal-page .site_header{
   opacity: 1;
   pointer-events: auto;
 }
-
-/* Hide site content until Enter */
-main .section_block { display: none; }
-main.entered .section_block { display: block; }
+/* Hide site content until Enter (LANDING PAGE ONLY) */
+body.landing-page main .section_block { display: none; }
+body.landing-page main.entered .section_block { display: block; }
 
 /* Full-screen black fade */
 .enter_transition{
