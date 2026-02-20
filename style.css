@@ -307,7 +307,7 @@ body.internal-page .site_header{
   max-width: none;
   margin: 0;
   padding: 110px 16px;
-  min-height: calc(100vh - 64px);
+  min-height: 100dvh;
 
   display: grid;
   place-items: center;
