@@ -511,6 +511,32 @@ body.internal-page .site_header{
   inset:0;
   background: rgba(0,0,0,0.60);
 }
+
+/* =================  Credits page background ================= */
+.credits_section{
+  position: relative;
+  max-width: none;
+  margin: 0;
+  padding: 110px 16px;
+  min-height: 100dvh;
+
+  display: grid;
+  place-items: center;
+
+  background-image: url("initals.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.credits_section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.60);
+}
+
+
 /* ================= ENTER SITE TRANSITION ================= */
 
 /* ================= CINEMATIC ENTER TRANSITION ================= */
