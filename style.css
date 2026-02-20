@@ -204,6 +204,73 @@ body {
   margin: 0 0 10px;
   font-weight: 500;
 }
+/* ===== Dropdown Nav ===== */
+
+.nav_menu {
+  position: relative;
+}
+
+/* Make the parent li a positioning anchor */
+.nav_item.has_dropdown {
+  position: relative;
+}
+
+/* Dropdown hidden by default */
+.dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  min-width: 200px;
+
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 9999;
+}
+
+/* Show dropdown on hover OR keyboard focus */
+.nav_item.has_dropdown:hover .dropdown,
+.nav_item.has_dropdown:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(6px);
+}
+
+.dropdown li a {
+  display: block;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.dropdown li a:hover,
+.dropdown li a:focus-visible {
+  color: #00f5a4;
+  outline: none;
+  background: rgba(255,255,255,0.06);
+}
+
+/* Small spacing so you don't "lose" hover moving into the dropdown */
+.nav_item.has_dropdown > a {
+  padding-bottom: 14px;
+}
 /* ===== Home section with background image ===== */
 .home_section{
   position: relative;
@@ -534,6 +601,87 @@ body.internal-page .site_header{
   position:absolute;
   inset:0;
   background: rgba(0,0,0,0.60);
+}
+.angels_section{
+  position: relative;
+  max-width: none;
+  margin: 0;
+  padding: 110px 16px;
+  min-height: 100dvh;
+
+  display: grid;
+  place-items: center;
+
+  background-image: url("thelibrary.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.angels_section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.60);
+}
+
+.angels_overlay_content{
+  position: relative;
+  z-index: 1;
+  width: min(980px, 100%);
+  text-align: left;
+
+  padding: 28px 22px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(4px);
+  border-radius: 6px;
+}
+
+.angels_overlay_content h2{
+  font-family: "Supernatural", serif;
+  letter-spacing: 6px;
+  font-weight: normal;
+  margin: 0 0 12px;
+}
+
+.angels_overlay_content p{
+  font-family: "Roboto", sans-serif;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.angels_grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.angels_card{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.35);
+  padding: 14px 14px;
+  border-radius: 6px;
+  font-family: "Roboto", sans-serif;
+}
+
+.angels_card h3{
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+
+.angels_card ul{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .angels_grid{
+    grid-template-columns: 1fr;
+  }
 }
 
 
