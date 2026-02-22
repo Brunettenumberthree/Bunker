@@ -293,7 +293,7 @@ body {
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.62);
+  background: rgba(0,0,0,0.25);
 }
 
 /* content stays above overlay */
@@ -460,8 +460,8 @@ body.internal-page .site_header{
 
   padding: 28px 22px;
   border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.12);
+  backdrop-filter: blur(2px);
   border-radius: 6px;
 }
 
@@ -486,8 +486,8 @@ body.internal-page .site_header{
 }
 
 .room_card{
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(0,0,0,0.08);
   padding: 14px 14px;
   border-radius: 6px;
   font-family: "Roboto", sans-serif;
@@ -529,7 +529,7 @@ body.internal-page .site_header{
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.60);
+  background: rgba(0,0,0,0.25);
 }
 
 /* ================= Sam's Room background ================= */
@@ -553,7 +553,7 @@ body.internal-page .site_header{
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.60);
+  background: rgba(0,0,0,0.35);
 }
 /* ================= AU page background ================= */
 .au_section{
@@ -602,6 +602,7 @@ body.internal-page .site_header{
   inset:0;
   background: rgba(0,0,0,0.60);
 }
+/* =================  Angels page background ================= */
 .angels_section{
   position: relative;
   max-width: none;
@@ -682,7 +683,7 @@ body.internal-page .site_header{
   .angels_grid{
     grid-template-columns: 1fr;
   }
-}
+}/* =================  hunters page background ================= */
 
 .hunters_section{
   position: relative;
@@ -704,7 +705,7 @@ body.internal-page .site_header{
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.60);
+  background: rgba(0,0,0,0.22);
 }
 
 .hunters_overlay_content{
@@ -716,7 +717,7 @@ body.internal-page .site_header{
   padding: 28px 22px;
   border: 1px solid rgba(255,255,255,0.10);
   background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
   border-radius: 6px;
 }
 
@@ -741,11 +742,20 @@ body.internal-page .site_header{
 }
 
 .hunters_card{
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.60);   /* lighter */
+  backdrop-filter: blur(px);
+
   padding: 14px 14px;
   border-radius: 6px;
   font-family: "Roboto", sans-serif;
+
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 0 6px rgba(0,0,0,0.10);
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,0.55),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
 }
 
 .hunters_card h3{
@@ -867,7 +877,7 @@ body.entered .hero {
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.60);
+  background: rgba(0,0,0,0.35);
 }
 
 .sams_room_section{
@@ -888,7 +898,7 @@ body.entered .hero {
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.60);
+  background: rgba(0,0,0,0.35);
 }
 
 /* Make sure overlay content stays on top of the ::before overlay */
